@@ -41,9 +41,6 @@ done
 
 echo "Installing libraries and dependencies"
 
-git clone https://github.com/IFAEControl/option_parse &> /dev/null
-install option_parse || die
-
 git clone https://github.com/IFAEControl/pyqt_tools &> /dev/null
 install pyqt_tools || die
 
