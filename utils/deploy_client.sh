@@ -55,3 +55,4 @@ for i in *.zip; do
     install "$(basename $i .zip)" || die
 done
 
+echo -ne "\a"
