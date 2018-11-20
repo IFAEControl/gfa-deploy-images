@@ -69,7 +69,7 @@ TMP_DIR="$(mktemp -d)"
 tar -xvf "$2"  -C "$TMP_DIR" || exit 1
 SERVER_COMMIT=$(get_parameter "$TMP_DIR/info_versions" gfaserver)
 MODULELIB_COMMIT=$(get_parameter "$TMP_DIR/info_versions" gfamodulelib)
-MODULE_COMMIT=$(get_parameter "$TMP_DIR/info_versions" gfamodule)
+MODULE_COMMIT=$(get_parameter "$TMP_DIR/info_versions" "gfamodule ")
 YOCTO_COMMIT=$(get_parameter "$TMP_DIR/info_versions" gfayocto)
 rm -rf "$TMP_DIR" || exit 1
 
