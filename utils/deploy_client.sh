@@ -50,9 +50,14 @@ pip install sip &>> /tmp/gfa_venv_pip_log || die
 pip install PyQt5 Cython &>> /tmp/gfa_venv_pip_log || die
 pip install guidata &>> /tmp/gfa_venv_pip_log || die
 
-for i in *.zip; do
+#for i in *.zip; do
+#    echo -e "\tInstalling $(basename $i .zip) and dependencies"
+#    install "$(basename $i .zip)" || die
+#done
+
+for i in "gfaaccesslib/python" "gfafunctionality" "gfagui"; do
     echo -e "\tInstalling $(basename $i .zip) and dependencies"
-    install "$(basename $i .zip)" || die
+    install "$i" || die
 done
 
 echo -ne "\a"
