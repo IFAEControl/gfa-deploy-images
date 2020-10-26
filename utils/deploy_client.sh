@@ -19,8 +19,13 @@ function die() {
 function install() {
     (
         cd "$1" || exit 1
-        stat requirements.txt &> /dev/null && (pip install -r requirements.txt &>> /tmp/gfa_venv_pip_log || exit 1) || true
-        stat setup.py &> /dev/null && (python3 setup.py install &>> /tmp/gfa_venv_pip_log || exit 1) || true
+	if stat requirements.txt &> /dev/null; then
+		QT_API=pyqt5 pip install -r requirements.txt &>> /tmp/gfa_venv_pip_log || exit 1
+	fi
+
+        if stat setup.py &> /dev/null; then
+		python3 setup.py install &>> /tmp/gfa_venv_pip_log || exit 1
+	fi
     ) || die
 }
 
@@ -41,14 +46,20 @@ done
 
 echo "Installing libraries and dependencies"
 
-git clone https://github.com/IFAEControl/pyqt_tools &> /dev/null
-install pyqt_tools || die
+pip install numpy &>> /tmp/gfa_venv_pip_log || die
 
 # some pip packages are broken, so we install dependencies manually
 echo -e "\tApplying workarounds for broken pip packages"
 pip install sip &>> /tmp/gfa_venv_pip_log || die
 pip install PyQt5 Cython &>> /tmp/gfa_venv_pip_log || die
-pip install guidata &>> /tmp/gfa_venv_pip_log || die
+QT_API=pyqt5 pip install guidata &>> /tmp/gfa_venv_pip_log || die
+
+# Install dependencies of gfa_accesslib
+# TOOD: Remove it in future releases, we should use requirements.txt
+pip install pytz
+
+git clone https://github.com/IFAEControl/pyqt_tools &> /dev/null
+install pyqt_tools || die
 
 for i in gfa*accesslib/python gfa*functionality "gfagui"; do
     echo -e "\tInstalling $i and dependencies"
