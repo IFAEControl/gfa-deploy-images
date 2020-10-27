@@ -2,7 +2,7 @@
 
 ### Client side
 
-To install client components check that you have python installed the virtualenv package. In ubuntu and debian systems it's called python3.6-venv.
+To install client components check that you have python installed and also the virtualenv package. In ubuntu and debian this package it's called python3.6-venv.
 
 To install client components of a release use the next script:
 
