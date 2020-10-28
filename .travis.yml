@@ -1,0 +1,5 @@
+dist: focal
+
+script:
+  - ./utils/deploy_client.sh .
+  - source gfa_venv/bin/activate
