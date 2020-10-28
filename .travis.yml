@@ -8,3 +8,6 @@ before_install:
 script:
   - ./utils/deploy_client.sh .
   - source gfa_venv/bin/activate
+
+after_failure:
+  - cat /tmp/gfa_venv_pip_log
