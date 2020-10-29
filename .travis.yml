@@ -3,6 +3,7 @@ dist: focal
 sudo: required
 
 before_install:
+  - sudo apt-get update && sudo apt-get upgrade
   - sudo apt-get install -y python3-venv
   - python --version
   - pip install -U pip
