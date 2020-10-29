@@ -9,7 +9,7 @@ before_install:
   - pip install -U pip
 
 script:
-  - bash -x ./utils/deploy_client.sh /tmp
+  - bash -x ./utils/deploy_client.sh .
   - source gfa_venv/bin/activate
 
 after_failure:
