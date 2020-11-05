@@ -7,6 +7,7 @@
 #   4: gfaaccesslib
 #   5: gfafunctionality
 #   6: gfagui
+#   7: gfa_tests-examples
 
 
 function echoerr() {
@@ -34,7 +35,7 @@ function pack() {
     )
 }
 
-if [ $# -ne 6 ]; then
+if [ $# -ne 7 ]; then
     echoerr "Invalid number of arguments: $#"
     exit 1 
 fi
